@@ -122,6 +122,20 @@ async function getAIResponse(question) {
 }
 
 // Routes
+// Root route - API info
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: "BFHL API Server",
+    endpoints: {
+      "GET /": "API information",
+      "GET /health": "Health check",
+      "GET /bfhl": "API documentation",
+      "POST /bfhl": "Main functionality"
+    },
+    status: "Running"
+  });
+});
+
 app.get('/health', (req, res) => {
   res.status(200).json({
     is_success: true,
